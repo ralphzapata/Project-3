@@ -77,6 +77,8 @@ class NavigationBar extends React.Component {
 
                             <ul className="nav navbar-nav navbar-right">
                                 {/* <li className="nav-item"><Link to="/" className="nav-link">HOME</Link></li> */}
+                                <li className="nav-item"><Link to="/" className="nav-link">HOME</Link></li>
+                                <li className="nav-item"><Link to="/old" className="nav-link">OLD</Link></li>
                                 <li className="nav-item"><Link to="/login" onClick={this.logoutHandler} className="nav-link">LOGOUT({core.username})</Link></li>
                             </ul>
 

@@ -6,3 +6,7 @@ frontend/node_modules
 .env.development
 .env.staging
 .env.production
+
+build
+backend/build
+frontend/build

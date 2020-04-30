@@ -20,9 +20,19 @@ class Weather {
                 q: this.q,
                 APPID: this.secret_key
             }), {});
+            var nl = [];
+            var num = 0;
+            for (var i = 0; i < xxx.data.list.length; i++){
+                console.log(xxx.data.list[i].dt_txt);
+                if (xxx.data.list[i].dt_txt.includes("12:00:00") && num < 6){
+                    num++;
+                    nl.push(xxx.data.list[i]);
+                }
+                    
+            }
             var result = {
                 city_info: xxx.data.city,
-                current: xxx.data.list[0]
+                current: nl
             }
             cb(utils.responseJSON("200", "success", "Successful", [result]));
         }

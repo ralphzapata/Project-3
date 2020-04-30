@@ -2,6 +2,7 @@ const utils = require("../models/utils");
 
 const News = require("../models/news")
 const Weather = require("../models/weather")
+const GMaps = require("../models/gmaps")
 
 var c = {};
 
@@ -28,6 +29,16 @@ c.news = async (req, res, next) => {
 c.weather = async (req, res, next) => {
     var w = new Weather(req.params.q);
     w.query((r)=>{
+        res.status(r.code).json(r.body);
+    });
+};
+
+c.gmaps = async (req, res, next) => {
+    var g = new GMaps({
+        lon: req.query.lon,
+        lat: req.query.lat
+    });
+    g.query((r)=>{
         res.status(r.code).json(r.body);
     });
 };

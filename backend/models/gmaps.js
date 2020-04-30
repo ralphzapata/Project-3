@@ -3,8 +3,8 @@ const utils = require("./utils");
 
 class News {
     constructor(q) {
-        this.url = process.env.X_NEWS_API_URL;
-        this.secret_key = process.env.X_NEWS_API_SECRET_KEY;
+        this.url = process.env.X_GMAPS_API_URL;
+        this.secret_key = process.env.X_GMAPS_API_SECRET_KEY;
         this.q = q;
     }
     async query(cb) {
@@ -17,15 +17,17 @@ class News {
             var myDateString = yy; //(US)
 
             console.log(myDateString);
-            var xxx = await utils.apiGet(this.url + '/everything?' + utils.toUrlEncoded({
-                q: this.q,
-                from: myDateString,
-                sortBy: "publishedAt",
-                apiKey: this.secret_key
+            var xxx = await utils.apiGet(this.url + '/radius?' + utils.toUrlEncoded({
+                radius: "5000",
+                lon: this.q.lon,
+                lat: this.q.lat,
+                format: "json",
+                apikey: this.secret_key
             }), {});
-            cb(utils.responseJSON("200", "success", "Successful", xxx.data.articles));
+            cb(utils.responseJSON("200", "success", "Successful", xxx.data));
         }
         catch (error) {
+            console.log(error);
             cb(utils.responseJSON("500", "failed", "Something went wrong!", {}));
         }
     }

@@ -14,6 +14,9 @@ r.route("/news/:q").get(controller.main.news)
 // WEATHER API
 r.route("/weather/:q").get(controller.main.weather)
 
+// GMAPS API
+r.route("/gmaps").get(controller.main.gmaps)
+
 // Handling router not found
 r.route("*")
   .get(controller.main.pageNotFound);

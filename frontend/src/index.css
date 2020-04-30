@@ -19,14 +19,27 @@ code {
 .container-login .logo{
   margin-bottom: 20px;
 }
-
+.row-places{
+  max-height: 400px;
+  overflow-y: scroll;
+}
+.row-loading{
+    margin-top: 50px;
+    height: 200px;
+    background:url('./assets/loading.gif') no-repeat center center;
+    background-size: 300px 100px; 
+}
 .card{ 
   margin-bottom: 5px;
 
 }
 .card-weather{
   color: #fff;
-  background: #3498db;
+  background:#74b9ff;
+}
+.card-weather-2{
+  color: #fff;
+  background:#00b894;
 }
 .form-control{
   background:#f5f5f5;
