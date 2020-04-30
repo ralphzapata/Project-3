@@ -1,12 +1,21 @@
 var express = require('express');
-var router = express.Router();
+var r = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.json({
-    status: "",
-    description: ""
-  });
-});
+const controller = {
+  main: require("../controllers/main")
+};
 
-module.exports = router;
+// API root URL
+r.route("/").get(controller.main.root)
+
+// NEWS API
+r.route("/news/:q").get(controller.main.news)
+
+// WEATHER API
+r.route("/weather/:q").get(controller.main.weather)
+
+// Handling router not found
+r.route("*")
+  .get(controller.main.pageNotFound);
+
+module.exports = r;
